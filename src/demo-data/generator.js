@@ -202,6 +202,34 @@ export const employeeTaskValues = {
   }),
 };
 
+const otrPatientFirstNames = [
+  'James', 'John', 'Robert', 'William', 'David', 'Richard', 'Thomas', 'Mary', 'Linda',
+  'Barbara', 'Maria', 'Lisa', 'Nancy', 'Betty', 'Sandra', 'Sharon',
+];
+const otrPatientLastNames = [
+  'Smith', 'Johnson', 'Williams', 'Jones', 'Brown', 'Davis', 'Miller', 'Wilson', 'Moore',
+  'Taylor', 'Anderson', 'Thomas', 'Jackson', 'White', 'Harris', 'Martin',
+];
+const otrDoctorNames = [
+  'Dr. Alan Cooper', 'Dr. Emily Carter', 'Dr. Michael Chen', 'Dr. Sarah Patel',
+  'Dr. David Kim', 'Dr. Laura Martinez',
+];
+
+export const otrWorklistValues = {
+  status: ['Scheduled', 'In Progress', 'Completed', 'Cancelled'],
+  procedureRoom: ['OR 1', 'OR 2', 'OR 3', 'Cath Lab', 'Endoscopy'],
+  startTime: ({ random }) => `${String(Math.floor(random() * 12) + 7).padStart(2, '0')}:00`,
+  endTime: ({ random }) => `${String(Math.floor(random() * 12) + 8).padStart(2, '0')}:30`,
+  bedNo: ({ index }) => `BED-${String(index + 1).padStart(3, '0')}`,
+  patientId: ({ random }) => `P${Math.floor(random() * 900000) + 100000}`,
+  patientName: ({ random }) => `${otrPatientFirstNames[Math.floor(random() * otrPatientFirstNames.length)]} ${otrPatientLastNames[Math.floor(random() * otrPatientLastNames.length)]}`,
+  gender: ['Male', 'Female'],
+  age: ({ random }) => Math.floor(random() * 60) + 18,
+  doctorName: otrDoctorNames,
+  procedureName: ['Appendectomy', 'Cholecystectomy', 'Knee Replacement', 'Cardiac Catheterization', 'Colonoscopy'],
+  remark: ['', 'Fasting required', 'Allergy: Penicillin', 'Consent signed', 'Pre-op meds given'],
+};
+
 export function generateRows({
   columnValues = defaultColumnValues,
   length,

@@ -14,17 +14,28 @@ import {
   Toolbar,
 } from '@devexpress/dx-react-grid-material-ui';
 
-import { generateRows } from '../../../demo-data/generator';
+import { generateRows, otrWorklistValues } from './demo-data/generator';
 
 export default () => {
   const [columns] = useState([
-    { name: 'name', title: 'Name' },
+    { name: 'status', title: 'Status' },
+    { name: 'procedureRoom', title: 'Procedure Room' },
+    { name: 'startTime', title: 'Start Time' },
+    { name: 'endTime', title: 'End Time' },
+    { name: 'bedNo', title: 'Bed No' },
+    { name: 'patientId', title: 'Patient ID' },
+    { name: 'patientName', title: 'Patient Name' },
     { name: 'gender', title: 'Gender' },
-    { name: 'city', title: 'City' },
-    { name: 'car', title: 'Car' },
+    { name: 'age', title: 'Age' },
+    { name: 'doctorName', title: 'Doctor Name' },
+    { name: 'procedureName', title: 'Procedure Name' },
+    { name: 'remark', title: 'Remark' },
   ]);
-  const [rows] = useState(generateRows({ length: 8 }));
-  const [grouping, setGrouping] = useState([{ columnName: 'city' }]);
+  const [rows] = useState(generateRows({
+    columnValues: otrWorklistValues,
+    length: 30,
+  }));
+  const [grouping, setGrouping] = useState([{ columnName: 'procedureRoom' }]);
 
   return (
     <Paper>
